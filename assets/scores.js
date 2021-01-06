@@ -1,14 +1,14 @@
 function printHighscores() {
-  // either get scores from localstorage or set to empty array
+  // get scores if there are any or set an empty array
   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
   
-  // sort highscores by score property in descending order
+  // sort highscores from highest to lowest
   highscores.sort(function(a, b) {
     return b.score - a.score;
   });
   
   highscores.forEach(function(score) {
-    // create li tag for each high score
+    // appends list element for every score
     var liTag = document.createElement("li");
     liTag.textContent = score.initials + " - " + score.score;
   
@@ -24,6 +24,5 @@ function clearHighscores() {
   
 document.getElementById("clear").onclick = clearHighscores;
   
-// run function when page loads
+// run on page load
 printHighscores();
-  
